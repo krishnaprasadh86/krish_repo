@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycomp.javablog.mapper.JavaBlogMapper">
+
+
+
+	<insert id="insertBlogUser" useGeneratedKeys="true"
+		keyProperty="id" keyColumn="id" parameterType="user">
+		insert into
+		BLOG_USER(name,username,email,phone,website)
+		values(#{user.name},#{user.username},#{user.email},#{user.phone},#{user.website})
+	</insert>
+
+	<insert id="insertAddress" useGeneratedKeys="true"
+		keyProperty="id" keyColumn="id" parameterType="address">
+		insert into
+		ADDRESS(userId,street,suite,city,zipcode)
+		values(#{address.userId},#{address.street},#{address.suite},#{address.city},#{address.zipcode})
+	</insert>
+
+	<insert id="insertGeoLocation" useGeneratedKeys="true"
+		keyProperty="id" keyColumn="id" parameterType="geoLocation">
+		insert into
+		GEO_LOCATION(addressId,lat,lng)
+		values(#{geoLocation.addressId},#{geoLocation.lat},#{geoLocation.lng})
+	</insert>
+
+	<insert id="insertCompany" useGeneratedKeys="true"
+		keyProperty="id" keyColumn="id" parameterType="company">
+		insert into
+		COMPANY(userId,name,catchPhrase,bs)
+		values(#{company.userId},#{company.name},#{company.catchPhrase},#{company.bs})
+	</insert>
+
+
+	<insert id="insertBlogPost" useGeneratedKeys="true"
+		keyProperty="id" keyColumn="id" parameterType="blogPost">
+		insert into
+		BLOG_POST(userId,title,body,actionedBy,createdDateTime)
+		values(#{blogPost.userId},#{blogPost.title},#{blogPost.body},#{blogPost.actionedBy},CURRENT_TIMESTAMP)
+	</insert>
+
+	<insert id="insertBlogAudit" useGeneratedKeys="true"
+		keyProperty="id" keyColumn="id" parameterType="blogAudit">
+		insert into
+		BLOG_AUDIT(blogPostId,createdBy,action,actionedTime)
+		values(#{blogAudit.blogPostId},#{blogAudit.createdBy},#{blogAudit.action},CURRENT_TIMESTAMP)
+	</insert>
+
+
+	<select id="getAllUsers" resultType="user">
+		SELECT * FROM BLOG_USER
+	</select>
+
+
+
+	<select id="getAllUserBlogs" resultMap="getUserBlogs">
+		SELECT
+		id,name,username,email,website FROM BLOG_USER
+	</select>
+
+	<resultMap id="getUserBlogs" type="userBlogs">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="username" column="username" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="website" column="website" />
+		<association property="company" column="id"
+			javaType="company" select="getCompanyByUserId" />
+		<association property="address" column="id"
+			javaType="address" select="getAddressByUserId" />
+
+		<collection property="blogs" javaType="ArrayList"
+			column="id" ofType="blogPost" select="getBlogPostByUserId" />
+
+	</resultMap>
+
+	<select id="getBlogPostByUserId" resultType="blogPost">
+		SELECT
+		id,userId,title,body FROM BLOG_POST where userId = #{id}
+	</select>
+
+	<select id="getCompanyByUserId" resultType="company">
+		SELECT
+		id,userId,name,catchPhrase,bs FROM COMPANY where userId = #{id}
+	</select>
+
+	<select id="getAddressByUserId" resultMap="addressMap">
+		SELECT
+		id,userId,street,suite,city,zipcode FROM ADDRESS where userId = #{id}
+	</select>
+
+	<resultMap id="addressMap" type="Address">
+		<result property="id" column="id" />
+		<result property="userId" column="userId" />
+		<result property="street" column="street" />
+		<result property="suite" column="suite" />
+		<result property="city" column="city" />
+		<result property="zipcode" column="zipcode" />
+		<association property="geo" column="id"
+			javaType="geoLocation" select="getGeoLocationByAddrId" />
+	</resultMap>
+
+	<select id="getGeoLocationByAddrId" resultType="geoLocation">
+		SELECT
+		id,addressId,lat,lng FROM GEO_LOCATION where addressId = #{id}
+	</select>
+
+</mapper>
+ 
