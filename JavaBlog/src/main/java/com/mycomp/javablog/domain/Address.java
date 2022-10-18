@@ -5,23 +5,22 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Address {
-	
+
 	public Address() {
-		
+
 	}
-	
+
 	private String street;
 	private String suite;
 	private String city;
 	private String zipcode;
 	private GeoLocation geo;
-	
+
 	@JsonIgnore
 	private int userId;
 	@JsonIgnore
 	private int id;
-	
-	
+
 	public int getId() {
 		return id;
 	}
@@ -77,7 +76,5 @@ public class Address {
 	public void setGeo(GeoLocation geo) {
 		this.geo = geo;
 	}
-
-	
 
 }

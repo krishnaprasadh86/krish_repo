@@ -2,6 +2,10 @@ package com.mycomp.javablog.domain;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Range;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -12,14 +16,23 @@ public class BlogPost {
 
 	}
 
-	private String userId;
+	@NotBlank(message = "UserId is mandatory")
+	private int userId;
+
+	@Range(min = 1)
 	private int id;
+
+	@NotBlank(message = "Blog Title is mandatory")
 	private String title;
+
+	@NotBlank(message = "Blog text is mandatory")
 	private String body;
 
 	@JsonIgnore
+
 	private int actionedBy;
 	@JsonIgnore
+
 	private Date createdDateTime;
 
 	public int getActionedBy() {
@@ -38,11 +51,11 @@ public class BlogPost {
 		this.createdDateTime = createdDateTime;
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 

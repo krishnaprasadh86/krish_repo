@@ -21,11 +21,11 @@ public class User {
 	private String website;
 	private Company company;
 	@JsonIgnore
-	private String createdBy;
+	private int createdBy;
 	@JsonIgnore
 	private Date createdDateTime;
 	@JsonIgnore
-	private String updatedBy;
+	private int updatedBy;
 	@JsonIgnore
 	private Date updatedDateTime;
 
@@ -93,11 +93,11 @@ public class User {
 		this.company = company;
 	}
 
-	public String getCreatedBy() {
+	public int getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(int createdBy) {
 		this.createdBy = createdBy;
 	}
 
@@ -109,11 +109,11 @@ public class User {
 		this.createdDateTime = createdDateTime;
 	}
 
-	public String getUpdatedBy() {
+	public int getUpdatedBy() {
 		return updatedBy;
 	}
 
-	public void setUpdatedBy(String updatedBy) {
+	public void setUpdatedBy(int updatedBy) {
 		this.updatedBy = updatedBy;
 	}
 

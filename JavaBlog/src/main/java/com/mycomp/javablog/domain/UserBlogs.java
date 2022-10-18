@@ -5,12 +5,12 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserBlogs  extends User {
-	
+public class UserBlogs extends User {
+
 	public UserBlogs() {
-		
+
 	}
-	
+
 	private List<BlogPost> blogs;
 
 	public List<BlogPost> getBlogs() {
@@ -20,6 +20,5 @@ public class UserBlogs  extends User {
 	public void setBlogs(List<BlogPost> blogs) {
 		this.blogs = blogs;
 	}
-	
 
 }

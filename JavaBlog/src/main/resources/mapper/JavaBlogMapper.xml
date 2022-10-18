@@ -14,7 +14,7 @@
 	</insert>
 
 	<insert id="insertAddress" useGeneratedKeys="true"
-		keyProperty="id" keyColumn="id" parameterType="address">
+		keyProperty="id" keyColumn="id" parameterType="address" >
 		insert into
 		ADDRESS(userId,street,suite,city,zipcode)
 		values(#{address.userId},#{address.street},#{address.suite},#{address.city},#{address.zipcode})
@@ -58,7 +58,7 @@
 
 	<select id="getAllUserBlogs" resultMap="getUserBlogs">
 		SELECT
-		id,name,username,email,website FROM BLOG_USER
+		id,name,username,email,website,phone FROM BLOG_USER
 	</select>
 
 	<resultMap id="getUserBlogs" type="userBlogs">
@@ -68,7 +68,7 @@
 		<result property="email" column="email" />
 		<result property="phone" column="phone" />
 		<result property="website" column="website" />
-		<association property="company" column="id"
+		<association property="company" column="id" 
 			javaType="company" select="getCompanyByUserId" />
 		<association property="address" column="id"
 			javaType="address" select="getAddressByUserId" />

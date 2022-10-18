@@ -9,8 +9,8 @@ username VARCHAR(50) NOT NULL,
 email VARCHAR(512) NOT NULL,
 phone VARCHAR(50) NOT NULL,
 website VARCHAR(512) NOT NULL,
-createdBy VARCHAR(50),
-updatedBy VARCHAR(50),
+createdBy int,
+updatedBy int,
 createdDateTime TIMESTAMP,
 updatedDateTime TIMESTAMP
 );  
@@ -55,7 +55,7 @@ userId INT,
 title VARCHAR(512) NOT NULL,  
 body VARCHAR(4000) NOT NULL,
 actionedBy smallint default 0, 
-updatedBy VARCHAR(50),
+updatedBy int,
 createdDateTime TIMESTAMP,
 updatedDateTime TIMESTAMP
 ); 
@@ -66,7 +66,7 @@ DROP TABLE IF EXISTS BLOG_AUDIT;
 CREATE TABLE BLOG_AUDIT(
 id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 blogPostId INT NOT NULL,
-createdBy varchar(50) not null,
+createdBy int,
 action smallint default 0, 
 actionedTime TIMESTAMP);
  

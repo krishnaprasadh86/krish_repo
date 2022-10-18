@@ -16,6 +16,27 @@ import com.mycomp.javablog.domain.UserBlogs;
 @Mapper
 public interface JavaBlogMapper {
 
+	/**
+	 * This method is used to insert the blog post
+	 * 
+	 * @param blogPost
+	 */
+	public void insertBlogPost(@Param("blogPost") BlogPost blogPost);
+
+	/**
+	 * This method is used to insert the blog audit
+	 * 
+	 * @param blogAudit
+	 */
+	public void insertBlogAudit(@Param("blogAudit") BlogAudit blogAudit);
+
+	/**
+	 * This method is used to retrieve all user and associated blogs
+	 * 
+	 * @return List of UserBlogs
+	 */
+	public List<UserBlogs> getAllUserBlogs();
+
 	public List<User> getAllUsers();
 
 	public void insertBlogUser(@Param("user") User user);
@@ -25,11 +46,5 @@ public interface JavaBlogMapper {
 	public void insertGeoLocation(@Param("geoLocation") GeoLocation geoLocation);
 
 	public void insertCompany(@Param("company") Company company);
-
-	public void insertBlogPost(@Param("blogPost") BlogPost blogPost);
-
-	public void insertBlogAudit(@Param("blogAudit") BlogAudit blogAudit);
-	
-	public List<UserBlogs> getAllUserBlogs();
 
 }

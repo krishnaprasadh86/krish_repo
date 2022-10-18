@@ -7,19 +7,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Company {
 
 	public Company() {
-		
+
 	}
-	
+
 	private String name;
 	private String catchPhrase;
 	private String bs;
-	
+
 	@JsonIgnore
 	private int userId;
 	@JsonIgnore
 	private int id;
-	
-	
+
 	public int getId() {
 		return id;
 	}
