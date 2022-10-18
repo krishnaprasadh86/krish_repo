@@ -80,6 +80,8 @@ public class JavaBlogService {
 		BlogAudit auditEntry = new BlogAudit();
 		auditEntry.setAction(JavaBlogConstants.CREATE_BLOG_CODE_VALUE);
 		auditEntry.setBlogPostId(blogPost.getId());
+		auditEntry.setBlogTitle(blogPost.getTitle());
+		auditEntry.setBlogBody(blogPost.getBody());
 		auditEntry.setCreatedBy(11); // harcoded for DEMO purpose
 		javaBlogMapper.insertBlogAudit(auditEntry);
 		logger.info("Audit entry created  id : " + auditEntry.getId());

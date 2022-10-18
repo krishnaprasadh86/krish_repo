@@ -13,6 +13,24 @@ public class BlogAudit {
 	private int blogPostId;
 	private int createdBy;
 	private int action;
+	private String blogTitle;
+	private String blogBody;
+
+	public String getBlogTitle() {
+		return blogTitle;
+	}
+
+	public void setBlogTitle(String blogTitle) {
+		this.blogTitle = blogTitle;
+	}
+
+	public String getBlogBody() {
+		return blogBody;
+	}
+
+	public void setBlogBody(String blogBody) {
+		this.blogBody = blogBody;
+	}
 
 	public int getId() {
 		return id;

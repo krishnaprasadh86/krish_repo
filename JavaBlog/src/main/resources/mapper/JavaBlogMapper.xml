@@ -45,8 +45,8 @@
 	<insert id="insertBlogAudit" useGeneratedKeys="true"
 		keyProperty="id" keyColumn="id" parameterType="blogAudit">
 		insert into
-		BLOG_AUDIT(blogPostId,createdBy,action,actionedTime)
-		values(#{blogAudit.blogPostId},#{blogAudit.createdBy},#{blogAudit.action},CURRENT_TIMESTAMP)
+		BLOG_AUDIT(blogPostId,blogTitle,blogBody, createdBy,action,actionedTime)
+		values(#{blogAudit.blogPostId},#{blogAudit.blogTitle},#{blogAudit.blogBody},#{blogAudit.createdBy},#{blogAudit.action},CURRENT_TIMESTAMP)
 	</insert>
 
 
