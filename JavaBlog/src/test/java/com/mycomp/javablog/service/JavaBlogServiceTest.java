@@ -146,29 +146,4 @@ public class JavaBlogServiceTest {
 		verify(javaBlogMapper, times(0)).insertBlogAudit(Mockito.any(BlogAudit.class));
 	}
 
-	/**
-	 * @Test public void getAllUserBlogsFailure() throws Exception {
-	 *       when(this.javaBlogMapper.getAllUserBlogs()).thenThrow(new
-	 *       NullPointerException()); assertThrows(Exception.class, new Executable()
-	 *       {
-	 * @Override public void execute() throws Throwable {
-	 *           javaBlogService.getAllUserBlogs(); } }); }
-	 * 
-	 * 
-	 * 
-	 * @Test public void createBlogOnBehalfFailure() throws Exception { BlogPost
-	 *       post = new BlogPost(); post.setBody("TestUser1 blog content 1");
-	 *       post.setTitle("TestUser1 title"); post.setUserId(1);
-	 * 
-	 *       doThrow(new
-	 *       NullPointerException()).when(javaBlogMapper).insertBlogPost(Mockito.any(BlogPost.class));
-	 *       doNothing().when(javaBlogMapper).insertBlogAudit(Mockito.any(BlogAudit.class));
-	 * 
-	 *       assertThrows(Exception.class, new Executable() {
-	 * @Override public void execute() throws Throwable {
-	 *           javaBlogService.createBlogOnBehalf(post); } });
-	 * 
-	 *           }
-	 */
-
 }
