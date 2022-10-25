@@ -2,10 +2,6 @@ package com.mycomp.javablog.domain;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotBlank;
-
-import org.hibernate.validator.constraints.Range;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -16,16 +12,12 @@ public class BlogPost {
 
 	}
 
-	@NotBlank(message = "UserId is mandatory")
 	private int userId;
 
-	@Range(min = 1)
 	private int id;
 
-	@NotBlank(message = "Blog Title is mandatory")
 	private String title;
 
-	@NotBlank(message = "Blog text is mandatory")
 	private String body;
 
 	@JsonIgnore

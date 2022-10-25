@@ -15,13 +15,19 @@ public class JavaBlogExceptionHandler extends ResponseEntityExceptionHandler {
 
 	private static Logger logger = LoggerFactory.getLogger(JavaBlogExceptionHandler.class);
 
+	/**
+	 * This method is used as generic Exception Handler
+	 * 
+	 * @param ex Exception class
+	 * @return Generic Exception response
+	 */
 	@ExceptionHandler(value = { Exception.class })
 	protected ResponseEntity<?> handleAllExceptions(Exception ex) {
 		logger.error(ex.getMessage());
 		ErrorResponse resp = new ErrorResponse();
 		resp.setErrorCode(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
 		resp.setErrorDescription(
-				"Error Occured while processing request, Please reach out to Support group @Javablog_support.com");
+				"Error occured while processing request, Please reach out to Support group @Javablog_support.com");
 		return new ResponseEntity<>(resp, HttpStatus.INTERNAL_SERVER_ERROR);
 
 	}

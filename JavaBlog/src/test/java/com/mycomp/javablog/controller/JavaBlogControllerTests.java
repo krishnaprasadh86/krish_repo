@@ -35,35 +35,49 @@ public class JavaBlogControllerTests {
 	@MockBean
 	private JavaBlogService javaBlogService;
 
+	/**
+	 * @throws Exception
+	 */
 	@Test
 	public void getAllUserBlogsStatusOK() throws Exception {
 		when(this.javaBlogService.getAllUserBlogs()).thenReturn(new ArrayList<UserBlogs>());
 		this.mvc.perform(get("/v1/javablog/admin/userblogs")).andExpect(status().isOk());
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	@Test
 	public void getAllUserBlogsStatusNotOk() throws Exception {
 		when(this.javaBlogService.getAllUserBlogs()).thenThrow(new NullPointerException());
 		this.mvc.perform(get("/v1/javablog/admin/userblogs")).andExpect(status().isInternalServerError());
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	@Test
 	public void getAllUserBlogsAuthorized() throws Exception {
-		// TODO based on security context machanism
+		// Based on security context mechanism
 		// This should work only for Admin Role User
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	@Test
 	public void createPostOnBehalfStatusOK() throws Exception {
 		BlogPost post = createBlogPost();
 		ObjectMapper mapper = new ObjectMapper();
 		String reqData = mapper.writeValueAsString(post);
 		when(this.javaBlogService.createBlogOnBehalf(Mockito.any(BlogPost.class))).thenReturn(post);
-
 		this.mvc.perform(post("/v1/javablog/admin/posts").accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON).content(reqData)).andExpect(status().isOk());
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	@Test
 	public void createPostOnBehalfNotOk() throws Exception {
 		BlogPost post = createBlogPost();
@@ -75,6 +89,9 @@ public class JavaBlogControllerTests {
 				.andExpect(status().isInternalServerError());
 	}
 
+	/**
+	 * @return
+	 */
 	private BlogPost createBlogPost() {
 		BlogPost post = new BlogPost();
 		post.setTitle("TestUser1 Blog title");
@@ -83,9 +100,12 @@ public class JavaBlogControllerTests {
 		return post;
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	@Test
 	public void createPostOnBehalfAuthorized() throws Exception {
-		// TODO based on security context machanism
+		// Based on security context machanism
 		// This should work only for Admin Role User
 	}
 

@@ -10,27 +10,9 @@
 
 	</settings>
 	<typeAliases>
-		<typeAlias type="com.mycomp.javablog.domain.User"
-			alias="user" />
-
-		<typeAlias type="com.mycomp.javablog.domain.Address"
-			alias="address" />
-
-		<typeAlias type="com.mycomp.javablog.domain.GeoLocation"
-			alias="geoLocation" />
-
-		<typeAlias type="com.mycomp.javablog.domain.Company"
-			alias="company" />
-			
-		<typeAlias type="com.mycomp.javablog.domain.BlogPost"
-			alias="blogPost" />
-			
-		<typeAlias type="com.mycomp.javablog.domain.UserBlogs"
-			alias="userBlogs" />
-			
+	
 		<typeAlias type="com.mycomp.javablog.domain.BlogAudit"
 			alias="blogAudit" />
 
 	</typeAliases>
-
 </configuration>
